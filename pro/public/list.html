@@ -1,0 +1,35 @@
+
+<html>
+    <head>
+    <title>list</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(() => {
+      $('#Button').click(() => {
+        const requestURL = 'users/' + $('#name').val();
+        console.log('the url is', requestURL);
+
+        $.axios.get('/user?userid')
+        .then(function (data){
+          console.log('You received some data!', data);
+          $('#status').html('Success' + requestURL);
+          $('#ram').html('My name is ' + data.name + 'my sub'+ data.sub);
+      });
+    });
+});
+</script>
+
+</head>
+<body>
+  <h1>Welcome to PetsApp!</h1>
+
+  Name: <input id="name" type="text" size="20"/>
+  <button id="Button">get details</button>
+
+  <div id="ram"></div>
+   <hr/>
+
+  <div id="status"></div>
+</body>
+</html>
